@@ -204,6 +204,7 @@ export default {
         />
       ),
       output: 'number',
+      monitoring: false,
       python() {
         this.definitions_['import_extension_time'] = 'from extensions.time import ntptime';
         const code = 'ntptime.get_days()';
