@@ -3,35 +3,6 @@ import translations from './l10n.yaml';
 import iconURI from './icon.svg';
 import ntptimePyURI from './ntptime.py';
 
-function provideGetCurrentTimeJs() {
-  this.definitions_['timezone'] = 'let timezone = 8;';
-  return this.provideFunction_('time_get_current_time', [
-    `const ${this.FUNCTION_NAME_PLACEHOLDER_} = (option = 'year') => {`,
-    `  const t = Date.now() + timezone * 60 * 60;`,
-    '  const d = new Date(t);',
-    `  switch (option) {`,
-    `  case 'year': return d.getFullYear();`,
-    `  case 'month': return d.getMonth() + 1;`,
-    `  case 'date': return d.getDate();`,
-    `  case 'weekday': return d.getDay() === 0 ? 7 : d.getDay();`,
-    `  case 'hour': return d.getHours();`,
-    `  case 'minute': return d.getMinutes();`,
-    `  case 'second': return d.getSeconds();`,
-    `  default: return '';`,
-    '  }',
-    '};',
-  ]);
-}
-
-function provideGetDaysSince2000Js() {
-  return this.provideFunction_('get_days_since_2000', [
-    `const ${this.FUNCTION_NAME_PLACEHOLDER_} = () => {`,
-    '  const t = new Date() - new Date(2000, 0, 1, 0, 0, 0);',
-    '  return t / (24 * 3600 * 1000);',
-    '};',
-  ]);
-}
-
 export default {
   iconURI,
   name: (
@@ -220,3 +191,32 @@ export default {
   ],
   translations,
 };
+
+function provideGetCurrentTimeJs() {
+  this.definitions_['timezone'] = 'let timezone = 8;';
+  return this.provideFunction_('time_get_current_time', [
+    `const ${this.FUNCTION_NAME_PLACEHOLDER_} = (option = 'year') => {`,
+    `  const t = Date.now() + timezone * 60 * 60;`,
+    '  const d = new Date(t);',
+    `  switch (option) {`,
+    `  case 'year': return d.getFullYear();`,
+    `  case 'month': return d.getMonth() + 1;`,
+    `  case 'date': return d.getDate();`,
+    `  case 'weekday': return d.getDay() === 0 ? 7 : d.getDay();`,
+    `  case 'hour': return d.getHours();`,
+    `  case 'minute': return d.getMinutes();`,
+    `  case 'second': return d.getSeconds();`,
+    `  default: return '';`,
+    '  }',
+    '};',
+  ]);
+}
+
+function provideGetDaysSince2000Js() {
+  return this.provideFunction_('get_days_since_2000', [
+    `const ${this.FUNCTION_NAME_PLACEHOLDER_} = () => {`,
+    '  const t = new Date() - new Date(2000, 0, 1, 0, 0, 0);',
+    '  return t / (24 * 3600 * 1000);',
+    '};',
+  ]);
+}
