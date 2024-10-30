@@ -6,7 +6,7 @@ export default {
   description: 'Time in the world.',
   image: featureImage,
   icon: iconImage,
-  tags: ['blocks', 'data', 'internet'],
+  tags: ['blocks', 'data'],
   internetRequired: true,
 
   // l10n
